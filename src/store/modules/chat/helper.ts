@@ -20,3 +20,22 @@ export function getLocalState(): Chat.ChatState {
 export function setLocalState(state: Chat.ChatState) {
   ss.set(LOCAL_NAME, state)
 }
+
+const API_NAME = 'chatAPI'
+
+export interface APIState {
+  api: string
+}
+
+export function defaultAPISetting(): APIState {
+  return { api: 'gpt-3.5-turbo' }
+}
+
+export function setLocalAPISetting(state: APIState) {
+  ss.set(API_NAME, state)
+}
+
+export function getLocalAPISetting(): APIState {
+  const localAPISetting: APIState | undefined = ss.get(API_NAME)
+  return { ...defaultAPISetting(), ...localAPISetting }
+}

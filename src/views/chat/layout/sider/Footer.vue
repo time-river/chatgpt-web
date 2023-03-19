@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { defineAsyncComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { HoverButton, SvgIcon, UserAvatar } from '@/components/common'
+import { HoverButton, SelectBox, SvgIcon, UserAvatar } from '@/components/common'
 import { useAuthStore } from '@/store'
 const Setting = defineAsyncComponent(() => import('@/components/common/Setting/index.vue'))
 
@@ -21,11 +21,14 @@ async function handleLogout() {
     <div class="flex-1 flex-shrink-0 overflow-hidden">
       <UserAvatar />
     </div>
+
     <HoverButton v-if="!!authStore.token" :tooltip="$t('common.logOut')" @click="handleLogout">
       <span class="text-xl text-[#4f555e] dark:text-white">
         <SvgIcon icon="uil:exit" />
       </span>
     </HoverButton>
+
+    <SelectBox />
 
     <HoverButton :tooltip="$t('setting.setting')" @click="show = true">
       <span class="text-xl text-[#4f555e] dark:text-white">

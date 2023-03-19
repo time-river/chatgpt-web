@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { getLocalState, setLocalState } from './helper'
+import type { APIState } from './helper'
+import { getLocalAPISetting, getLocalState, setLocalAPISetting, setLocalState } from './helper'
 import { router } from '@/router'
 
 export const useChatStore = defineStore('chat-store', {
@@ -189,6 +190,22 @@ export const useChatStore = defineStore('chat-store', {
 
     recordState() {
       setLocalState(this.$state)
+    },
+  },
+})
+
+export const useAPIStore = defineStore('api-store', {
+  state: (): APIState => getLocalAPISetting(),
+  actions: {
+    setAPI(api: string) {
+      if (this.api !== api) {
+        this.api = api
+        this.recordState()
+      }
+    },
+
+    recordState() {
+      setLocalAPISetting(this.$state)
     },
   },
 })
