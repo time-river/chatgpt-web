@@ -89,4 +89,8 @@ export default {
     onlineImportWarning: 'Note: Please check the JSON file source!',
     downloadError: 'Please check the network status and JSON file validity',
   },
+  account: {
+    login: 'Login',
+    exit: 'exit',
+  },
 }

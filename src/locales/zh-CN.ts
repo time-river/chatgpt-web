@@ -89,4 +89,8 @@ export default {
     onlineImportWarning: '注意：请检查 JSON 文件来源！',
     downloadError: '请检查网络状态与 JSON 文件有效性',
   },
+  account: {
+    login: '登录',
+    exit: '退出',
+  },
 }
