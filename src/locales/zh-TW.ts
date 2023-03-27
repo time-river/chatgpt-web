@@ -27,6 +27,8 @@ export default {
     register: '註冊',
     login: '登錄',
     notLoggedIn: '登錄 / 註冊',
+    password: '密碼',
+    resetPassword: '重置密碼',
     logOut: '退出登錄',
     unauthorizedTips: '未經授權，請先進行驗證。',
   },

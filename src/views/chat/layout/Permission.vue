@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { NButton, NInput, NModal, NSpace, useMessage } from 'naive-ui'
 import { useRoute, useRouter } from 'vue-router'
-import { fetchLogin, fetchRegister, fetchVerify } from '@/api'
+import { fetchRegister, fetchVerify } from '@/api'
 import { useAuthStore } from '@/store'
 import Icon403 from '@/icons/403.vue'
 
@@ -53,30 +53,6 @@ function handlePress(event: KeyboardEvent) {
   if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault()
     handleLogin()
-  }
-}
-
-async function handleLogin() {
-  const name = username.value.trim()
-  const pwd = password.value.trim()
-
-  if (!name || !pwd)
-    return
-
-  try {
-    loading.value = true
-    const result = await fetchLogin(name, pwd)
-    authStore.setToken(result.data.token)
-    ms.success('success')
-    router.go(0)
-  }
-  catch (error: any) {
-    ms.error(error.message ?? 'error')
-    authStore.removeToken()
-    password.value = ''
-  }
-  finally {
-    loading.value = false
   }
 }
 

@@ -27,6 +27,8 @@ export default {
     register: '注册',
     login: '登录',
     notLoggedIn: '登录 / 注册',
+    password: '密码',
+    resetPassword: '重置密码',
     logOut: '退出登录',
     unauthorizedTips: '未经授权，请先进行验证。',
   },

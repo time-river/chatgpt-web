@@ -27,6 +27,8 @@ export default {
     register: 'Register',
     login: 'Login',
     notLoggedIn: 'Login / Register',
+    password: 'Password',
+    resetPassword: 'Reset Password',
     logOut: 'Login Out',
     unauthorizedTips: 'Unauthorized, please verify first.',
   },
@@ -88,9 +90,5 @@ export default {
     importRepeatContent: 'Content is repeatedly skipped: {msg}',
     onlineImportWarning: 'Note: Please check the JSON file source!',
     downloadError: 'Please check the network status and JSON file validity',
-  },
-  account: {
-    login: 'Login',
-    exit: 'exit',
   },
 }

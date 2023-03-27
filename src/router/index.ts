@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-import { createRouter, createWebHashHistory } from 'vue-router'
-import { setupPageGuard } from './permission'
+import { createRouter, createWebHistory } from 'vue-router'
+import { navigationGuard } from './permission'
 import { ChatLayout } from '@/views/chat/layout'
 
 const routes: RouteRecordRaw[] = [
@@ -36,15 +36,35 @@ const routes: RouteRecordRaw[] = [
     name: 'notFound',
     redirect: '/404',
   },
+
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/index.vue'),
+  },
+
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/register/index.vue'),
+  },
+
+  {
+    path: '/reset',
+    name: 'reset',
+    component: () => import('@/views/reset/index.vue'),
+  },
 ]
 
 export const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
-setupPageGuard(router)
+// setupPageGuard(router)
+
+navigationGuard(router)
 
 export async function setupRouter(app: App) {
   app.use(router)

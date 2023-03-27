@@ -44,6 +44,8 @@ router.post('/chat-process', [auth, limiter], async (req, res) => {
 })
 
 router.post('/config', auth, async (req, res) => {
+  res.send({ message: null, data: { apiModel: 'ChatGPTAPI', timeoutMs: 60000, socksProxy: '-' }, status: 'Success' })
+
   try {
     const response = await chatConfig()
     res.send(response)
@@ -57,7 +59,7 @@ router.post('/session', async (req, res) => {
   try {
     const AUTH_SECRET_KEY = process.env.AUTH_SECRET_KEY
     const hasAuth = isNotEmptyString(AUTH_SECRET_KEY)
-    res.send({ status: 'Success', message: '', data: { auth: hasAuth, model: currentModel() } })
+    res.send({ status: 'Success', message: '', data: { auth: false, model: currentModel(), test: 'abcd' } })
   }
   catch (error) {
     res.send({ status: 'Fail', message: error.message, data: null })

@@ -26,3 +26,11 @@ export function setupPageGuard(router: Router) {
     }
   })
 }
+
+export function navigationGuard(router: Router) {
+  router.beforeEach(async (to, from) => {
+    const canAccess = false
+    if (to.name !== 'login' && to.name !== 'register' && !canAccess)
+      return '/login'
+  })
+}
